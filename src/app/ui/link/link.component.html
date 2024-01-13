@@ -1,0 +1,6 @@
+<a [routerLink]="[link]" class="text-md text-neutral-400 hover:text-neutral-900 flex items-center">
+  <span *ngIf="!!image" class="w-[15px] h-[15px] block rounded-full overflow-hidden mr-[6px] mb-[-2px]">
+    <img [src]="image.path" [alt]="image.alt" class="object-cover">
+  </span>
+  {{text}}
+</a>
