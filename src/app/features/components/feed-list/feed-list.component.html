@@ -1,5 +1,12 @@
 <div class="max-w-[980px] px-20 py-5 my-auto w-full mx-auto">
   <h1 class="text-4xl font-bold mb-10 text-indigo-900 border-b-2 pb-4 border-gray-100">{{ title }}</h1>
-
-  <feed-card />
+  <ul *ngIf="list.length" class="flex flex-col gap-9">
+    <li
+      *ngFor="let item of list; index as i"
+      [ngClass]="{'border-b-2': i !== list.length - 1}"
+      class="pb-9 border-gray-50"
+    >
+      <feed-card [data]="item" />
+    </li>
+  </ul>
 </div>

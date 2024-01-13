@@ -1,25 +1,26 @@
 <div>
   <div class="flex mb-2">
     <div class="w-[50px] h-[50px] rounded-full overflow-hidden">
-      <img src="https://api.realworld.io/images/demo-avatar.png" alt="alt" class="object-cover w-full h-full"/>
+      <img [src]='data?.author?.image || "https://api.realworld.io/images/smiley-cyrus.jpeg"' alt="alt" class="object-cover w-full h-full"/>
     </div>
     <div class="ml-4">
-      <p class="text-xl font-semibold text-indigo-600">User Name</p>
-      <p class="text-sm text-neutral-500">January 4, 2024</p>
+      <p class="text-xl font-semibold text-indigo-600">{{ data?.author?.username }}</p>
+      <p class="text-sm text-neutral-500">{{ data?.createdAt }}</p>
     </div>
     <button type="button" class="border-indigo-100 bg-indigo-50 border-2 py-2 px-2 rounded-[10px] ml-auto">
       ❤
-      <span>100</span>
+      <span>{{ data?.favoritesCount }}</span>
     </button>
   </div>
-  <h2 class="text-2xl">Feed title Lorem ipsum dolor sit.</h2>
-  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quisquam labore, qui quaerat veritatis ut.</p>
+  <h2 class="text-2xl">{{ data?.title }}</h2>
+  <p>{{ data?.body }}</p>
   <div class="mt-2">
     <a class="text-sm text-gray-500">Read more</a>
-    <div class="flex gap-2 mt-3">
-      <a class="text-base border-gray-300 text-gray-500 border-[1px] px-2 py-[1px] rounded-xl">#filter1</a>
-      <a class="text-base border-gray-300 text-gray-500 border-[1px] px-2 py-[1px] rounded-xl">#filter2</a>
-      <a class="text-base border-gray-300 text-gray-500 border-[1px] px-2 py-[1px] rounded-xl">#filter3</a>
+    <div class="flex gap-2 mt-3" *ngIf="data?.tagList?.length">
+      <a
+        class="text-base border-gray-300 text-gray-500 border-[1px] px-2 py-[1px] rounded-xl"
+        *ngFor="let tag of data?.tagList"
+      >{{ tag }}</a>
     </div>
   </div>
 </div>
