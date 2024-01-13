@@ -10,8 +10,8 @@ export interface FeedCard {
   favoritesCount: number
   author: {
     username: string
-    bio: string
-    image: string
+    bio?: string
+    image?: string
     following: boolean
   }
 }
